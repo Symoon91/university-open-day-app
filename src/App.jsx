@@ -30,18 +30,10 @@ import {
   CheckCircle,
   AlertCircle,
   XCircle,
-  Heart,
-  BookOpen,
-  Utensils,
-  Zap,
-  MessageCircle,
+
 } from "lucide-react";
 import './App.css';
 import UniversityMap from "./components/UniversityMap.jsx";
-import DepartmentHub from "./components/DepartmentHub.jsx";
-import AmenitiesFinder from "./components/AmenitiesFinder.jsx";
-import ItineraryBuilder from "./components/ItineraryBuilder.jsx";
-import FeedbackHub from "./components/FeedbackHub.jsx";
 
 function App() {
   const [activeTab, setActiveTab] = useState("home");
@@ -245,58 +237,11 @@ function App() {
                 </CardContent>
               </Card>
 
-              <Card 
-                className="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl border-0 bg-gradient-to-br from-indigo-500 to-violet-600 text-white"
-                onClick={() => setActiveTab("departments")}
-              >
-                <CardContent className="p-6 text-center">
-                  <BookOpen className="mx-auto mb-4 h-12 w-12 transition-transform group-hover:scale-110" />
-                  <h3 className="text-lg font-semibold">Departments</h3>
-                  <p className="mt-2 text-sm text-indigo-100">Explore faculties</p>
-                  <ChevronRight className="mx-auto mt-3 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </CardContent>
-              </Card>
+
             </div>
           </div>
 
-          {/* New Features Section */}
-          <div className="mb-12">
-            <h2 className="mb-6 text-2xl font-bold text-gray-900">Enhanced Features</h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <Card 
-                className="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl border-0 bg-gradient-to-br from-rose-500 to-pink-600 text-white"
-                onClick={() => setActiveTab("itinerary")}
-              >
-                <CardContent className="p-6 text-center">
-                  <Zap className="mx-auto mb-4 h-12 w-12 transition-transform group-hover:scale-110" />
-                  <h3 className="text-lg font-semibold">My Itinerary</h3>
-                  <p className="mt-2 text-sm text-rose-100">Build your schedule</p>
-                </CardContent>
-              </Card>
 
-              <Card 
-                className="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl border-0 bg-gradient-to-br from-teal-500 to-cyan-600 text-white"
-                onClick={() => setActiveTab("amenities")}
-              >
-                <CardContent className="p-6 text-center">
-                  <Utensils className="mx-auto mb-4 h-12 w-12 transition-transform group-hover:scale-110" />
-                  <h3 className="text-lg font-semibold">Amenities</h3>
-                  <p className="mt-2 text-sm text-teal-100">Find facilities</p>
-                </CardContent>
-              </Card>
-
-              <Card 
-                className="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl border-0 bg-gradient-to-br from-orange-500 to-yellow-600 text-white"
-                onClick={() => setActiveTab("feedback")}
-              >
-                <CardContent className="p-6 text-center">
-                  <MessageCircle className="mx-auto mb-4 h-12 w-12 transition-transform group-hover:scale-110" />
-                  <h3 className="text-lg font-semibold">Feedback</h3>
-                  <p className="mt-2 text-sm text-orange-100">Rate & review</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
 
           {/* Quick Info Section */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -698,14 +643,7 @@ function App() {
         return renderScanner();
       case "info":
         return renderInfo();
-      case "departments":
-        return <DepartmentHub />;
-      case "amenities":
-        return <AmenitiesFinder />;
-      case "itinerary":
-        return <ItineraryBuilder />;
-      case "feedback":
-        return <FeedbackHub />;
+
       default:
         return renderHome();
     }
@@ -763,50 +701,7 @@ function App() {
               <QrCode className={`h-6 w-6 ${activeTab === "scanner" ? "scale-110" : ""}`} />
               <span className="font-medium">Scanner</span>
             </button>
-            <button
-              className={`flex flex-col items-center gap-1 px-3 py-2 text-xs transition-all duration-200 whitespace-nowrap ${
-                activeTab === "departments"
-                  ? "text-indigo-600"
-                  : "text-gray-600 hover:text-indigo-600"
-              }`}
-              onClick={() => setActiveTab("departments")}
-            >
-              <BookOpen className={`h-6 w-6 ${activeTab === "departments" ? "scale-110" : ""}`} />
-              <span className="font-medium">Depts</span>
-            </button>
-            <button
-              className={`flex flex-col items-center gap-1 px-3 py-2 text-xs transition-all duration-200 whitespace-nowrap ${
-                activeTab === "amenities"
-                  ? "text-teal-600"
-                  : "text-gray-600 hover:text-teal-600"
-              }`}
-              onClick={() => setActiveTab("amenities")}
-            >
-              <Utensils className={`h-6 w-6 ${activeTab === "amenities" ? "scale-110" : ""}`} />
-              <span className="font-medium">Amenities</span>
-            </button>
-            <button
-              className={`flex flex-col items-center gap-1 px-3 py-2 text-xs transition-all duration-200 whitespace-nowrap ${
-                activeTab === "itinerary"
-                  ? "text-rose-600"
-                  : "text-gray-600 hover:text-rose-600"
-              }`}
-              onClick={() => setActiveTab("itinerary")}
-            >
-              <Zap className={`h-6 w-6 ${activeTab === "itinerary" ? "scale-110" : ""}`} />
-              <span className="font-medium">Itinerary</span>
-            </button>
-            <button
-              className={`flex flex-col items-center gap-1 px-3 py-2 text-xs transition-all duration-200 whitespace-nowrap ${
-                activeTab === "feedback"
-                  ? "text-orange-600"
-                  : "text-gray-600 hover:text-orange-600"
-              }`}
-              onClick={() => setActiveTab("feedback")}
-            >
-              <MessageCircle className={`h-6 w-6 ${activeTab === "feedback" ? "scale-110" : ""}`} />
-              <span className="font-medium">Feedback</span>
-            </button>
+
           </div>
         </div>
       </div>
